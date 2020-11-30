@@ -1,1 +1,1 @@
-# platzi-django-course
+# Clonigram

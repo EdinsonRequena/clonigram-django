@@ -15,10 +15,15 @@ def hello_world(request):
     return HttpResponse(f'Hello, the server time is: {hour}')
 
 
-def hi(request):
-    """HI"""
-    numbers = [int(i) for i in request.GET['numbers'].split(',')]
-    sort_int = sorted(numbers)
+def sort(request):
+    """
+    :type nums: List[str]
+    :type sort_int: List[int]
+    :type data: Dict[int]
+    :rtype: Dict
+    """
+    nums = [int(i) for i in request.GET['numbers'].split(',')]
+    sort_int = sorted(nums)
     data = {
         'status': 'ok',
         'numbers': sort_int,

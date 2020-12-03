@@ -18,7 +18,7 @@ def hello_world(request):
     return HttpResponse(f'Hello, the server time is: {hour}')
 
 
-def sort(request):
+def sorted_intengers(request):
     """
     :type nums: List[str]
     :type sort_int: List[int]
@@ -36,3 +36,18 @@ def sort(request):
         json.dumps(data, indent=4),
         content_type='application/json'
         )
+
+
+def say_hi(request, name, age):
+    '''
+    :type name: str
+    :type age: int
+    :type msg: str
+    :rtype: str
+    '''
+    if age < 12:
+        msg = f'Sorry {name}, you are not allowed here!'
+    else:
+        msg = f'Hello, {name} Welcome to the system!!!'
+
+    return HttpResponse(msg)

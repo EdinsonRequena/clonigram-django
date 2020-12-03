@@ -1,7 +1,6 @@
 '''
 Posts views
 '''
-
 from django.http import HttpResponse
 
 # Utilities
@@ -36,7 +35,6 @@ def list_posts(request):
     :rtype: List
     '''
     content = []
-    
     for post in posts:
         content.append("""
             <p><strong>{name}</strong></p>

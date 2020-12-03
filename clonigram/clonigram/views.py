@@ -1,4 +1,6 @@
-'''Clonigram views'''
+'''
+Clonigram views
+'''
 
 # Django modules
 from django.http import HttpResponse

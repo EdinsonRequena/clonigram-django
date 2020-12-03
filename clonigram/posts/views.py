@@ -1,3 +1,8 @@
-from django.shortcuts import render
+'''
+Posts views
+'''
 
-# Create your views here.
+from django.http import HttpResponse
+
+
+

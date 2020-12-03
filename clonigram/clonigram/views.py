@@ -9,7 +9,10 @@ import json
 from datetime import datetime as dt
 
 def hello_world(request):
-    ''' Return a Gretting'''
+    '''
+    :type: hour: str
+    :rtype: str
+    '''
     hour = dt.now().strftime('%b %dth, %Y - %H:%M hrs')
 
     return HttpResponse(f'Hello, the server time is: {hour}')

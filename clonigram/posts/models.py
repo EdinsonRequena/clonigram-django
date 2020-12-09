@@ -10,6 +10,7 @@ class User(models.Model):
     :type password: CharField
     :type first_name: CharField
     :type last_name: CharField
+    :type is_admin: BooleanField
     :type bio: CharField
     :type birthdate: DateField
     :type created: DateTimeField
@@ -21,6 +22,8 @@ class User(models.Model):
 
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+
+    is_admin = models.BooleanField(default=False)
 
     bio = models.TextField(blank=True)
 

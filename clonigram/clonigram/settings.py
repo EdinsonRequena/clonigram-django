@@ -44,6 +44,7 @@ THIRD_PARTY_APPS = [
 # Our apps
 LOCAL_APPS = [
     'posts',
+    'users',
 ]
 # Application definition
 

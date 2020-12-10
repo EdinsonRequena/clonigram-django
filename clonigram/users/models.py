@@ -7,10 +7,17 @@ from django.contrib.auth.models import User
 from django.db import models
 
 class Profile(models.Model):
-    '''
-    Profile model
+    '''Profile model
 
     Proxy model that extends the base data with other information
+
+    :type user: OneToOneField
+    :type website: URLField
+    :type bigoraphy: TextField
+    :type phone_number: CharField
+    :type picture: ImageField
+    :type created: DateTimeField
+    :type modified: DateTimeField
     '''
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)

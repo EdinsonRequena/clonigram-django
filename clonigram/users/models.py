@@ -37,4 +37,4 @@ class Profile(models.Model):
 
     def __str__(self):
         """Return username."""
-        pass
+        return self.user.username

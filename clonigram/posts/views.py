@@ -41,5 +41,5 @@ def list_posts(request):
     :type posts: List
     :rtype: List
     '''
-    return render(request, 'feed.html', {'posts': posts})
+    return render(request, 'posts/feed.html', {'posts': posts})
 

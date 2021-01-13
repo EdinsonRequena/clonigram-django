@@ -48,9 +48,11 @@ LOCAL_APPS = [
 ]
 # Application definition
 
+# All Apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
-MIDDLEWARE = [
+# Internal Django middelwares
+DJANGO_MIDDLEWARES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,6 +61,19 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# External Middlewares
+THIRD_PARTY_MIDDLEWARES = [
+
+]
+
+# Our Middlewares
+LOCAL_MIDDLEWARES = [
+    'clonigram.middleware.ProfileCompletionMiddleware',
+]
+
+# All Middlewares
+MIDDLEWARE = DJANGO_MIDDLEWARES + THIRD_PARTY_MIDDLEWARES + LOCAL_MIDDLEWARES
 
 ROOT_URLCONF = 'clonigram.urls'
 

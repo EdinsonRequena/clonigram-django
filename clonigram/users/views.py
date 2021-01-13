@@ -61,6 +61,9 @@ def signup(request):
 
         return redirect('login')
 
+    return render(request, 'users/signup.html')
+
+
 
 
 @login_required

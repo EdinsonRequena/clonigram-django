@@ -1,6 +1,8 @@
-"""Clonigram middleware catalog."""
+"""
+Clonigram middleware catalog.
+"""
 
-# Django
+# Internal Django Modules
 from django.shortcuts import redirect
 from django.urls import reverse
 

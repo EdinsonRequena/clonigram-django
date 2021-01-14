@@ -1,21 +1,35 @@
 """
-    Users Views
+Users Views
 """
-# Django dependecies
+# Internal Django Modules
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-
-# Execption dependencies
-from django.db.utils import IntegrityError
-
-# Models dependencies
 from django.contrib.auth.models import User
+from django.db.utils import IntegrityError
+# Users Modules
 from users.models import Profile
+from users.forms import ProfileForms
 
 
 def update_profile(request):
     """Update a user's profile view."""
+    profile = request.user.profile
+
+    if request.method == 'POST':
+        form = ProfileForms(request.POST, request.FILES)
+        if form.is_valid():
+            data = form.cleaned_data
+
+            profile.website = data('website')
+            profile.website = data('phone_number')
+            profile.website = data('biography')
+            profile.website = data('picture')
+            profile.save()
+
+            return redirect('update_profile')
+        else:
+            form = ProfileForms()
     return render(
         request=request,
         template_name='users/update_profile.html',

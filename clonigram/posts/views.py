@@ -5,7 +5,7 @@ Posts views
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-# Django Posts Modules
+# Posts Modules
 from posts.forms import PostForm
 
 # Utilities

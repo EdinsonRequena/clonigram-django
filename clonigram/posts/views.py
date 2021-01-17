@@ -5,7 +5,8 @@ Posts views
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-#
+# Django Posts Modules
+from posts.forms import PostForm
 
 # Utilities
 from datetime import datetime as dt
@@ -57,4 +58,15 @@ def create_post(request):
         if form.is_valid():
             form.save()
             return redirect('feed')
+    else:
+        form = PostForm()
 
+    return render(
+        request=request,
+        template_name='post/new.html',
+        context={
+            'form': form,
+            'user': request.user,
+            'profile': request.user.profile
+        }
+    )

@@ -1,9 +1,11 @@
 '''
 Posts views
 '''
-# Django dependencies
+# Django Modules
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+#
 
 # Utilities
 from datetime import datetime as dt
@@ -45,4 +47,14 @@ def list_posts(request):
     :rtype: List
     '''
     return render(request, 'posts/feed.html', {'posts': posts})
+
+@login_required
+def create_post(request):
+    """Create a new post view.
+    """
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('feed')
 

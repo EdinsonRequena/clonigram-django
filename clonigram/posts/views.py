@@ -7,9 +7,8 @@ from django.shortcuts import render, redirect
 
 # Posts Modules
 from posts.forms import PostForm
+from posts.models import Post
 
-# Utilities
-from datetime import datetime as dt
 
 posts = [
     {
@@ -47,6 +46,8 @@ def list_posts(request):
     :type posts: List
     :rtype: List
     '''
+    posts = Post.Objects.all().order_by('-created')
+
     return render(request, 'posts/feed.html', {'posts': posts})
 
 @login_required

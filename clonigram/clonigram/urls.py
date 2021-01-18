@@ -14,15 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-# Django dependencies
+# Internal Django Modules
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-
-# Our dependencies
+# Clonigram Modules
 from clonigram import  views as local_views
+# Posts Modules
 from posts import views as posts_views
+# Users Modules
 from users import views as users_views
 
 urlpatterns = [

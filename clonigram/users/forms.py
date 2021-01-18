@@ -3,8 +3,11 @@ User forms.
 """
 # Internal Django Modules
 from django import forms
+from django.contrib.auth.models import User
+# Users Modules
+from users.models import Profile
 
-class SingupForm(form.Form):
+class SingupForm(forms.Form):
     """Sing Up Form.
     """
 
@@ -19,6 +22,42 @@ class SingupForm(form.Form):
     email = forms.CharField(min_length=6, max_length=70, widget=forms.EmailInput())
 
 
+    def clean_username(self):
+        """Username must be unique.
+        """
+
+        username = self.cleaned_data['username']
+        q = User.objects.filter(username=username).exists()
+        if q:
+            raise forms.ValidationError('Username is already exists')
+
+        return username
+
+
+    def clean(self):
+        """Verify password confitmation match.
+        """
+
+        data = super().clean()
+
+        password = data['password']
+        password_confirmation = data['password_confirmation']
+
+        if password != password_confirmation:
+            raise forms.ValidationError("Passwords don't match.")
+
+        return data
+
+
+    def save(self):
+        """Create user and profile.
+        """
+        data = self.cleaned_data
+        data.pop('password_confirmation')
+
+        user = User.objects.create_user(**data)
+        profile = Profile(user=user)
+        profile.save()
 
 
 class ProfileForms(forms.Form):
